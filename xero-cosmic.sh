@@ -60,7 +60,7 @@ check_gpu_cosmic_compatibility() {
         elif echo "$GPU_INFO" | grep -qi "Intel"; then
             # Check for Intel GPU compatibility (HD Graphics 4000 series and newer)
             if echo "$GPU_INFO" | grep -Eqi "HD Graphics ([4-9][0-9]{2,3}|[1-9][0-9]{4,})|Iris|Xe"; then
-                show_dialog "\n\nYour \Zb\Z6Intel\Zn GPU should support \Zb\Z1Cosmic Desktop\Zn."
+                show_dialog "\n\nYour \Zb\Z6Intel\Zn GPU should support \Zb\Z1Cosmic Desktop\Zn, do you want to proceed?"
             else
                 show_dialog "\n\nOlder \Zb\Z6Intel\Zn GPU detected. Only HD Graphics 4000 series and newer support \Zb\Z1Cosmic Desktop\Zn."
             fi
@@ -72,7 +72,7 @@ check_gpu_cosmic_compatibility() {
                 show_dialog "\n\nOlder \Zb\Z6AMD\Zn GPU detected. Only RX 480 and newer support \Zb\Z1Cosmic Desktop\Zn."
             fi
         else
-            show_dialog "\n\nUnknown or unsupported GPU detected. \Zb\Z1Cosmic Desktop\Zn compatibility is uncertain."
+            show_dialog "\n\nUnknown or unsupported GPU detected. \Zb\Z1Cosmic Desktop\Zn compatibility is uncertain, do you want to proceed anyway?"
         fi
     else
         show_dialog "Cannot detect GPU. 'lspci' command not found."
@@ -149,7 +149,7 @@ systemctl enable bluetooth.service
 echo
 echo "Installing other useful applications..."
 echo
-install_packages "downgrade update-grub meld timeshift mpv gnome-disk-utility btop nano git rustup eza ntp most wget dnsutils logrotate gtk-update-icon-cache dex bash-completion bat bat-extras ttf-fira-code otf-libertinus tex-gyre-fonts ttf-hack-nerd ttf-ubuntu-font-family awesome-terminal-fonts ttf-jetbrains-mono-nerd adobe-source-sans-pro-fonts gtk-engines gtk-engine-murrine gnome-themes-extra firefox firefox-ublock-origin ntfs-3g gvfs mtpfs udiskie udisks2 ldmtool gvfs-afc gvfs-mtp gvfs-nfs gvfs-smb gvfs-gphoto2 libgsf tumbler freetype2 libopenraw ffmpegthumbnailer python-pip python-cffi python-numpy python-docopt python-pyaudio python-pyparted python-pygments python-websockets ocs-url xmlstarlet yt-dlp wavpack unarchiver gnustep-base parallel systemdgenie gnome-keyring ark vi duf gcc yad zip xdo lzop nmon tree vala htop lshw cmake cblas expac fuse3 lhasa meson unace unrar unzip p7zip rhash sshfs vnstat nodejs cronie hwinfo arandr assimp netpbm wmctrl grsync libmtp polkit sysprof semver zenity gparted hddtemp mlocate jsoncpp fuseiso gettext node-gyp intltool graphviz pkgstats inetutils s3fs-fuse playerctl oniguruma cifs-utils lsb-release dbus-python dconf-editor laptop-detect perl-xml-parser gnome-disk-utility appmenu-gtk-module"
+install_packages "downgrade update-grub meld timeshift mpv gnome-disk-utility btop nano git rustup eza ntp most wget dnsutils logrotate gtk-update-icon-cache dex bash-completion bat bat-extras ttf-fira-code otf-libertinus tex-gyre-fonts ttf-hack-nerd ttf-ubuntu-font-family awesome-terminal-fonts ttf-jetbrains-mono-nerd adobe-source-sans-pro-fonts gtk-engines gtk-engine-murrine gnome-themes-extra firefox firefox-ublock-origin ntfs-3g gvfs mtpfs udiskie udisks2 ldmtool gvfs-afc gvfs-mtp gvfs-nfs gvfs-smb gvfs-gphoto2 libgsf tumbler freetype2 libopenraw ffmpegthumbnailer python-pip python-cffi python-numpy python-docopt python-pyaudio python-pyparted python-pygments python-websockets ocs-url xmlstarlet yt-dlp wavpack unarchiver gnustep-base parallel systemdgenie gnome-keyring ark vi duf gcc yad zip xdo lzop nmon tree vala htop lshw cmake cblas expac fuse3 lhasa meson unace unrar unzip p7zip rhash sshfs vnstat nodejs cronie hwinfo arandr assimp netpbm wmctrl grsync libmtp polkit sysprof semver zenity gparted hddtemp mlocate jsoncpp fuseiso gettext node-gyp intltool graphviz pkgstats inetutils s3fs-fuse playerctl oniguruma cifs-utils lsb-release dbus-python laptop-detect perl-xml-parser gnome-disk-utility appmenu-gtk-module"
 
 # Check if GRUB is installed
 if command -v grub-mkconfig &> /dev/null; then
@@ -189,7 +189,7 @@ case $result in
     ;;
 esac
 
-dialog --title "Installation Complete" --msgbox "\nInstallation Complete. Done, now exit and reboot.\n\nFor further customization, if you opted to install our Toolkit, please find it in AppMenu under System or by typing xero-cli in terminal." 12 50
+dialog --title "Installation Complete" --msgbox "\nInstallation Complete. Now exit and reboot.\n\nFor further customization, please find our Toolkit in AppMenu under System or by typing xero-cli in terminal." 12 50
 
 # Exit chroot and reboot
 clear
