@@ -117,7 +117,7 @@ main_menu() {
       clear && selective_install "cosmic linux-headers pacman-contrib xdg-user-dirs wayland-protocols wayland-utils lib32-wayland system76-power system-config-printer"
       ;;
     3)
-      clear && install_packages "cosmic-session-git linux-headers pacman-contrib xdg-user-dirs switcheroo-control xdg-desktop-portal-cosmic-git xorg-xwayland just mold cosmic-edit-git cosmic-files-git cosmic-store-git cosmic-term-git cosmic-wallpapers-git wayland-protocols wayland-utils lib32-wayland system76-power system-config-printer"
+      clear && install_packages "cosmic-session-git linux-headers pacman-contrib xdg-user-dirs switcheroo-control xdg-desktop-portal-cosmic-git xorg-xwayland just mold cosmic-edit-git cosmic-files-git cosmic-store-git cosmic-term-git cosmic-wallpapers-git wayland-protocols wayland-utils lib32-wayland system76-power system-config-printer clipboard-manager-git cosmic-randr-git"
       ;;
     *)
       if [ "$CHOICE" == "" ]; then
@@ -140,9 +140,11 @@ main_menu() {
 main_menu
 
 echo "Installing PipeWire packages..."
+echo
 install_packages "gstreamer gst-libav gst-plugins-bad gst-plugins-base gst-plugins-ugly gst-plugins-good libdvdcss alsa-utils alsa-firmware pavucontrol lib32-pipewire-jack libpipewire pipewire-v4l2 pipewire-x11-bell pipewire-zeroconf realtime-privileges sof-firmware ffmpeg ffmpegthumbs ffnvcodec-headers"
 
 echo "Installing Bluetooth packages..."
+echo
 install_packages "bluez bluez-utils bluez-plugins bluez-hid2hci bluez-cups bluez-libs bluez-tools"
 systemctl enable bluetooth.service
 
